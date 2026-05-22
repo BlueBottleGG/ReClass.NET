@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using ReClassNET.Debugger;
@@ -95,7 +94,7 @@ namespace ReClassNET.Core
 					Protection = data.Protection,
 					Type = data.Type,
 					ModulePath = data.ModulePath,
-					ModuleName = Path.GetFileName(data.ModulePath),
+					ModuleName = data.ModulePath,
 					Category = data.Category
 				});
 			};
@@ -108,7 +107,7 @@ namespace ReClassNET.Core
 					End = data.BaseAddress.Add(data.Size),
 					Size = data.Size,
 					Path = data.Path,
-					Name = Path.GetFileName(data.Path)
+					Name = data.Path
 				});
 			};
 
