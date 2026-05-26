@@ -37,12 +37,6 @@ namespace ReClassNET.Forms
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dumpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sectionsDataGridView = new System.Windows.Forms.DataGridView();
-            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.protectionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moduleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bannerBox1 = new ReClassNET.Controls.BannerBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.modulesTabPage = new System.Windows.Forms.TabPage();
@@ -57,6 +51,12 @@ namespace ReClassNET.Forms
             this.filterLabel = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.filterTextBox = new System.Windows.Forms.TextBox();
+            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.protectionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moduleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sectionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBox1)).BeginInit();
@@ -133,54 +133,6 @@ namespace ReClassNET.Forms
             this.sectionsDataGridView.TabIndex = 0;
             this.sectionsDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.sectionsDataGridView_CellMouseDoubleClick);
             this.sectionsDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectRow_CellMouseDown);
-            // 
-            // addressColumn
-            // 
-            this.addressColumn.DataPropertyName = "address";
-            this.addressColumn.HeaderText = "Address";
-            this.addressColumn.Name = "addressColumn";
-            this.addressColumn.ReadOnly = true;
-            this.addressColumn.Width = 70;
-            // 
-            // sizeColumn
-            // 
-            this.sizeColumn.DataPropertyName = "size";
-            this.sizeColumn.HeaderText = "Size";
-            this.sizeColumn.Name = "sizeColumn";
-            this.sizeColumn.ReadOnly = true;
-            this.sizeColumn.Width = 52;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            this.nameColumn.Width = 60;
-            // 
-            // protectionColumn
-            // 
-            this.protectionColumn.DataPropertyName = "protection";
-            this.protectionColumn.HeaderText = "Protection";
-            this.protectionColumn.Name = "protectionColumn";
-            this.protectionColumn.ReadOnly = true;
-            this.protectionColumn.Width = 80;
-            // 
-            // typeColumn
-            // 
-            this.typeColumn.DataPropertyName = "type";
-            this.typeColumn.HeaderText = "Type";
-            this.typeColumn.Name = "typeColumn";
-            this.typeColumn.ReadOnly = true;
-            this.typeColumn.Width = 56;
-            // 
-            // moduleColumn
-            // 
-            this.moduleColumn.DataPropertyName = "module";
-            this.moduleColumn.HeaderText = "Module";
-            this.moduleColumn.Name = "moduleColumn";
-            this.moduleColumn.ReadOnly = true;
-            this.moduleColumn.Width = 476;
             // 
             // bannerBox1
             // 
@@ -344,6 +296,54 @@ namespace ReClassNET.Forms
             this.filterTextBox.TabIndex = 0;
             this.filterTextBox.TextChanged += new System.EventHandler(this.filterTextBox_TextChanged);
             // 
+            // addressColumn
+            // 
+            this.addressColumn.DataPropertyName = "address";
+            this.addressColumn.HeaderText = "Address";
+            this.addressColumn.Name = "addressColumn";
+            this.addressColumn.ReadOnly = true;
+            this.addressColumn.Width = 70;
+            // 
+            // sizeColumn
+            // 
+            this.sizeColumn.DataPropertyName = "size";
+            this.sizeColumn.HeaderText = "Size";
+            this.sizeColumn.Name = "sizeColumn";
+            this.sizeColumn.ReadOnly = true;
+            this.sizeColumn.Width = 52;
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.DataPropertyName = "name";
+            this.nameColumn.HeaderText = "Name";
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.ReadOnly = true;
+            this.nameColumn.Width = 60;
+            // 
+            // protectionColumn
+            // 
+            this.protectionColumn.DataPropertyName = "protection";
+            this.protectionColumn.HeaderText = "Prot";
+            this.protectionColumn.Name = "protectionColumn";
+            this.protectionColumn.ReadOnly = true;
+            this.protectionColumn.Width = 40;
+            // 
+            // typeColumn
+            // 
+            this.typeColumn.DataPropertyName = "type";
+            this.typeColumn.HeaderText = "Type";
+            this.typeColumn.Name = "typeColumn";
+            this.typeColumn.ReadOnly = true;
+            this.typeColumn.Width = 56;
+            // 
+            // moduleColumn
+            // 
+            this.moduleColumn.DataPropertyName = "module";
+            this.moduleColumn.HeaderText = "Module";
+            this.moduleColumn.Name = "moduleColumn";
+            this.moduleColumn.ReadOnly = true;
+            this.moduleColumn.Width = 516;
+            // 
             // ProcessInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,12 +385,6 @@ namespace ReClassNET.Forms
 		private System.Windows.Forms.TabPage sectionsTabPage;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem dumpToolStripMenuItem;
-		private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn sizeColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn protectionColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn typeColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn moduleColumn;
 		private System.Windows.Forms.DataGridViewImageColumn moduleIconDataGridViewImageColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn moduleNameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn moduleAddressDataGridViewTextBoxColumn;
@@ -400,5 +394,11 @@ namespace ReClassNET.Forms
 		private System.Windows.Forms.Label filterLabel;
 		private System.Windows.Forms.Button refreshButton;
 		private System.Windows.Forms.TextBox filterTextBox;
+		private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn sizeColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn protectionColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn typeColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn moduleColumn;
 	}
 }
