@@ -10,7 +10,7 @@ permissions:
 
 jobs: 
   build-csharp:
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
     outputs:
       artifact: ${{steps.artifact.outputs.artifact-id}}
       version: ${{steps.version.outputs.version}}
