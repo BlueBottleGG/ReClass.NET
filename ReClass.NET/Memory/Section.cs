@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ReClassNET.Memory
 {
@@ -44,4 +44,5 @@ namespace ReClassNET.Memory
 		public string ModuleName { get; set; }
 		public string ModulePath { get; set; }
 	}
+
 }

@@ -53,6 +53,10 @@ namespace ReClassNET.Forms
             this.moduleSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modulePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sectionsTabPage = new System.Windows.Forms.TabPage();
+            this.filterGroupBox = new System.Windows.Forms.GroupBox();
+            this.filterLabel = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.filterTextBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sectionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerBox1)).BeginInit();
@@ -60,6 +64,7 @@ namespace ReClassNET.Forms
             this.modulesTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modulesDataGridView)).BeginInit();
             this.sectionsTabPage.SuspendLayout();
+            this.filterGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip
@@ -124,7 +129,7 @@ namespace ReClassNET.Forms
             this.sectionsDataGridView.ReadOnly = true;
             this.sectionsDataGridView.RowHeadersVisible = false;
             this.sectionsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.sectionsDataGridView.Size = new System.Drawing.Size(796, 386);
+            this.sectionsDataGridView.Size = new System.Drawing.Size(796, 333);
             this.sectionsDataGridView.TabIndex = 0;
             this.sectionsDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.sectionsDataGridView_CellMouseDoubleClick);
             this.sectionsDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectRow_CellMouseDown);
@@ -195,10 +200,10 @@ namespace ReClassNET.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.modulesTabPage);
             this.tabControl.Controls.Add(this.sectionsTabPage);
-            this.tabControl.Location = new System.Drawing.Point(12, 60);
+            this.tabControl.Location = new System.Drawing.Point(12, 113);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(810, 418);
+            this.tabControl.Size = new System.Drawing.Size(810, 365);
             this.tabControl.TabIndex = 3;
             // 
             // modulesTabPage
@@ -207,7 +212,7 @@ namespace ReClassNET.Forms
             this.modulesTabPage.Location = new System.Drawing.Point(4, 22);
             this.modulesTabPage.Name = "modulesTabPage";
             this.modulesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.modulesTabPage.Size = new System.Drawing.Size(802, 392);
+            this.modulesTabPage.Size = new System.Drawing.Size(802, 339);
             this.modulesTabPage.TabIndex = 1;
             this.modulesTabPage.Text = "Modules";
             this.modulesTabPage.UseVisualStyleBackColor = true;
@@ -233,8 +238,9 @@ namespace ReClassNET.Forms
             this.modulesDataGridView.ReadOnly = true;
             this.modulesDataGridView.RowHeadersVisible = false;
             this.modulesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.modulesDataGridView.Size = new System.Drawing.Size(796, 386);
+            this.modulesDataGridView.Size = new System.Drawing.Size(796, 333);
             this.modulesDataGridView.TabIndex = 1;
+            this.modulesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modulesDataGridView_CellContentClick);
             this.modulesDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectRow_CellMouseDown);
             // 
             // moduleIconDataGridViewImageColumn
@@ -290,10 +296,53 @@ namespace ReClassNET.Forms
             this.sectionsTabPage.Location = new System.Drawing.Point(4, 22);
             this.sectionsTabPage.Name = "sectionsTabPage";
             this.sectionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.sectionsTabPage.Size = new System.Drawing.Size(802, 392);
+            this.sectionsTabPage.Size = new System.Drawing.Size(802, 339);
             this.sectionsTabPage.TabIndex = 0;
             this.sectionsTabPage.Text = "Sections";
             this.sectionsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // filterGroupBox
+            // 
+            this.filterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterGroupBox.Controls.Add(this.filterLabel);
+            this.filterGroupBox.Controls.Add(this.refreshButton);
+            this.filterGroupBox.Controls.Add(this.filterTextBox);
+            this.filterGroupBox.Location = new System.Drawing.Point(12, 54);
+            this.filterGroupBox.Name = "filterGroupBox";
+            this.filterGroupBox.Size = new System.Drawing.Size(810, 53);
+            this.filterGroupBox.TabIndex = 6;
+            this.filterGroupBox.TabStop = false;
+            this.filterGroupBox.Text = "Filter";
+            // 
+            // filterLabel
+            // 
+            this.filterLabel.AutoSize = true;
+            this.filterLabel.Location = new System.Drawing.Point(6, 22);
+            this.filterLabel.Name = "filterLabel";
+            this.filterLabel.Size = new System.Drawing.Size(108, 13);
+            this.filterLabel.TabIndex = 1;
+            this.filterLabel.Text = "Address/Path/Name:";
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Image = global::ReClassNET.Properties.Resources.B16x16_Arrow_Refresh;
+            this.refreshButton.Location = new System.Drawing.Point(664, 17);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(139, 23);
+            this.refreshButton.TabIndex = 2;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refreshButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.refreshButton.UseVisualStyleBackColor = true;
+            // 
+            // filterTextBox
+            // 
+            this.filterTextBox.Location = new System.Drawing.Point(120, 19);
+            this.filterTextBox.Name = "filterTextBox";
+            this.filterTextBox.Size = new System.Drawing.Size(253, 20);
+            this.filterTextBox.TabIndex = 0;
+            this.filterTextBox.TextChanged += new System.EventHandler(this.filterTextBox_TextChanged);
             // 
             // ProcessInfoForm
             // 
@@ -301,6 +350,7 @@ namespace ReClassNET.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(834, 490);
+            this.Controls.Add(this.filterGroupBox);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.bannerBox1);
             this.MinimumSize = new System.Drawing.Size(586, 320);
@@ -316,6 +366,8 @@ namespace ReClassNET.Forms
             this.modulesTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.modulesDataGridView)).EndInit();
             this.sectionsTabPage.ResumeLayout(false);
+            this.filterGroupBox.ResumeLayout(false);
+            this.filterGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -344,5 +396,9 @@ namespace ReClassNET.Forms
 		private System.Windows.Forms.DataGridViewTextBoxColumn moduleAddressDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn moduleSizeDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn modulePathDataGridViewTextBoxColumn;
+		private System.Windows.Forms.GroupBox filterGroupBox;
+		private System.Windows.Forms.Label filterLabel;
+		private System.Windows.Forms.Button refreshButton;
+		private System.Windows.Forms.TextBox filterTextBox;
 	}
 }

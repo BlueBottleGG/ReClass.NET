@@ -79,6 +79,8 @@ namespace ReClassNET.Forms
 			modulesTable.Columns.Add("path", typeof(string));
 			modulesTable.Columns.Add("module", typeof(Module));
 
+			var sectionFilter = (SectionProtection p) => $"{(p.HasFlag(SectionProtection.Read) ? 'r' : '-')}{(p.HasFlag(SectionProtection.Write) ? 'w' : '-')}{(p.HasFlag(SectionProtection.Execute) ? 'x' : '-')}{(p.HasFlag(SectionProtection.CopyOnWrite) ? 'p' : '-')}{(p.HasFlag(SectionProtection.Guard) ? 'g' : '-')}";
+
 			await Task.Run(() =>
 			{
 				if (process.EnumerateRemoteSectionsAndModules(out var sections, out var modules))
@@ -89,7 +91,7 @@ namespace ReClassNET.Forms
 						row["address"] = section.Start.ToString(Constants.AddressHexFormat);
 						row["size"] = section.Size.ToString(Constants.AddressHexFormat);
 						row["name"] = section.Name;
-						row["protection"] = section.Protection.ToString();
+						row["protection"] = sectionFilter(section.Protection);
 						row["type"] = section.Type.ToString();
 						row["module"] = section.ModuleName;
 						row["section"] = section;
@@ -247,6 +249,35 @@ namespace ReClassNET.Forms
 		{
 			var row = sectionsDataGridView.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault()?.DataBoundItem as DataRowView;
 			return row?["section"] as Section;
+		}
+
+		private void modulesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void filterTextBox_TextChanged(object sender, EventArgs e)
+		{
+			ApplyFilter();
+		}
+
+		private void ApplyFilter()
+		{
+			// i'm not going to learn winforms to only filter the open window
+			var filter = filterTextBox.Text;
+			if (!string.IsNullOrEmpty(filter))
+			{
+				((DataTable)sectionsDataGridView.DataSource).DefaultView.RowFilter =
+					$"name like '%{filter}%' or module like '%{filter}%' or CONVERT(address, System.String) like '%{filter}%'";
+				((DataTable)modulesDataGridView.DataSource).DefaultView.RowFilter =
+					$"name like '%{filter}%' or path like '%{filter}%' or CONVERT(address, System.String) like '%{filter}%'";
+			}
+			else
+			{
+				((DataTable)modulesDataGridView.DataSource).DefaultView.RowFilter = filter;
+				((DataTable)sectionsDataGridView.DataSource).DefaultView.RowFilter = filter;
+			}
+
 		}
 	}
 }

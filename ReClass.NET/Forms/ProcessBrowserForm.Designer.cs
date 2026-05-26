@@ -184,6 +184,7 @@ namespace ReClassNET.Forms
             this.filterGroupBox.TabIndex = 5;
             this.filterGroupBox.TabStop = false;
             this.filterGroupBox.Text = "Filter";
+            this.filterGroupBox.Enter += new System.EventHandler(this.filterGroupBox_Enter);
             // 
             // previousProcessLinkLabel
             // 

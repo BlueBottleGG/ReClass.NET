@@ -135,5 +135,10 @@ namespace ReClassNET.Forms
 			}
 			((DataTable)processDataGridView.DataSource).DefaultView.RowFilter = filter;
 		}
+
+		private void filterGroupBox_Enter(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
