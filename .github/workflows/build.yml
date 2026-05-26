@@ -17,10 +17,12 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v6
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v3
+
     - name: build
-      run: |
-        & 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\Launch-VsDevShell.ps1'
-        msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.GITHUB_WORKSPACE}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.GITHUB_WORKSPACE}}
 
     - name: upload artifact
       id: artifact
