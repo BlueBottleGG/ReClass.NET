@@ -1,0 +1,30 @@
+name: build
+on: 
+  push:
+    branches: ["master"]
+env:
+  SOLUTION_FILE_PATH: .
+  BUILD_CONFIGURATION: Release
+permissions:
+  contents: read
+
+jobs: 
+  build-csharp:
+    runs-on: windows-latest
+    outputs:
+      artifact: ${{steps.artifact.outputs.artifact-id}}
+      version: ${{steps.version.outputs.version}}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v6
+
+    - name: build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: dotnet build -c ${{env.BUILD_CONFIGURATION}}
+
+    - name: upload artifact
+      id: artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: build-backend
+        path: ./bin/${{env.BUILD_CONFIGURATION}}/x64
